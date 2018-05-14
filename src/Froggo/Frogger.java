@@ -1,6 +1,7 @@
 package Froggo;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
@@ -25,7 +26,7 @@ public class Frogger implements ActionListener {
 
 	public ArrayList<Rectangle> car;
 
-	public boolean gameOver, started;
+	public boolean gameOver, started = true;
 
 	public Random rand;
 
@@ -138,6 +139,13 @@ public class Frogger implements ActionListener {
 
 		for (Rectangle Car : car) {
 			paintCar(g, Car);
+		}
+
+		g.setColor(Color.white);
+		g.setFont(new Font("Arial", 1, 100));
+		
+		if(gameOver){
+			g.drawString("Game Over!", 100, HEIGHT / 2 - 50);
 		}
 	}
 
