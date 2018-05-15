@@ -16,7 +16,7 @@ public class Frogger implements ActionListener {
 
 	public static Frogger frogger;
 
-	public final int WIDTH = 1200, HEIGHT = 800;
+	public final int WIDTH = 1000, HEIGHT = 600;
 
 	public Renderer renderer;
 
@@ -40,8 +40,20 @@ public class Frogger implements ActionListener {
 
 	public void repaint(Graphics g) {
 
-		g.setColor(Color.blue);
+		g.setColor(Color.black);
 		g.fillRect(0, 0, WIDTH, HEIGHT);
+		
+		g.setColor(Color.green);
+		g.fillRect(0,  0, WIDTH, HEIGHT / 5);
+		
+		g.setColor(Color.green);
+		g.fillRect(0, 470, WIDTH, HEIGHT / 5);
+		
+		g.setColor(Color.YELLOW);
+		g.fillRect(0, 295, WIDTH, HEIGHT / 45);
+		
+		g.setColor(Color.YELLOW);
+		g.fillRect(0, 275, WIDTH, HEIGHT / 45);
 		
 	}
 
