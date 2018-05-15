@@ -75,7 +75,7 @@ public class Frogger implements ActionListener {
 
 	public void paintCar(Graphics g, Rectangle car) {
 
-		g.setColor(Color.red);
+		g.setColor(Color.green);
 		g.fillRect(car.x, car.y, car.width, car.height);
 
 	}
@@ -128,7 +128,7 @@ public class Frogger implements ActionListener {
 
 	public void repaint(Graphics g) {
 
-		g.setColor(Color.black);
+		g.setColor(Color.blue);
 		g.fillRect(0, 0, WIDTH, HEIGHT);
 
 		g.setColor(Color.orange);

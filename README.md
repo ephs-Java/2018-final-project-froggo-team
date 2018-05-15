@@ -3,4 +3,4 @@
 
 Check the wiki for details and team pages.
 
-
+This is our group wiki thing
