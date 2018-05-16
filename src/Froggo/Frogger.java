@@ -42,6 +42,8 @@ public class Frogger implements ActionListener {
 
 		g.setColor(Color.black);
 		g.fillRect(0, 0, WIDTH, HEIGHT);
+		g.setColor(Color.black);
+		g.fillRect(0, 133, WIDTH, HEIGHT / 2);
 		
 		g.setColor(Color.green);
 		g.fillRect(0,  0, WIDTH, HEIGHT / 5);
