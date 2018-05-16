@@ -8,7 +8,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Random;
-
 import javax.swing.JFrame;
 import javax.swing.Timer;
 
@@ -19,7 +18,6 @@ public class Frogger implements ActionListener {
 	public final int WIDTH = 1000, HEIGHT = 600;
 
 	public Renderer renderer;
-
 
 	public Frogger() {
 
@@ -39,10 +37,22 @@ public class Frogger implements ActionListener {
 
 	public void repaint(Graphics g) {
 
-		g.setColor(Color.blue);
+		g.setColor(Color.black);
 		g.fillRect(0, 0, WIDTH, HEIGHT);
 		g.setColor(Color.black);
 		g.fillRect(0, 133, WIDTH, HEIGHT / 2);
+		
+		g.setColor(Color.green);
+		g.fillRect(0,  0, WIDTH, HEIGHT / 5);
+		
+		g.setColor(Color.green);
+		g.fillRect(0, 470, WIDTH, HEIGHT / 5);
+		
+		g.setColor(Color.YELLOW);
+		g.fillRect(0, 295, WIDTH, HEIGHT / 45);
+		
+		g.setColor(Color.YELLOW);
+		g.fillRect(0, 275, WIDTH, HEIGHT / 45);
 		
 	}
 
