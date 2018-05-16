@@ -20,7 +20,6 @@ public class Frogger implements ActionListener {
 
 	public Renderer renderer;
 
-	public boolean gameOver, started = true;
 
 	public Frogger() {
 
