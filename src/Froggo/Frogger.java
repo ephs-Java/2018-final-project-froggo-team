@@ -8,7 +8,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Random;
-
 import javax.swing.JFrame;
 import javax.swing.Timer;
 
@@ -19,8 +18,6 @@ public class Frogger implements ActionListener {
 	public final int WIDTH = 1000, HEIGHT = 600;
 
 	public Renderer renderer;
-
-	public boolean gameOver, started = true;
 
 	public Frogger() {
 
