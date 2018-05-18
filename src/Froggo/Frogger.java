@@ -43,8 +43,8 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 		jframe.setResizable(false);
 		jframe.setVisible(true);
 
-		frog = new Rectangle(WIDTH / 2 - 10, HEIGHT / 2 - 10, 20, 20);
-		
+		frog = new Rectangle(WIDTH / 2 - 10, HEIGHT - 50, 20, 20);
+
 		timer.start();
 	}
 
@@ -63,11 +63,12 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 		g.fillRect(0, 480, WIDTH, HEIGHT / 60);
 		g.setColor(Color.YELLOW);
 		g.fillRect(0, 500, WIDTH, HEIGHT / 60);
-		
+
 		g.setColor(Color.RED);
 		g.fillRect(frog.x, frog.y, frog.width, frog.height);
 		
-		
+	
+
 	}
 
 	public static void main(String[] args) {
@@ -77,7 +78,7 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (frog.y > HEIGHT - 120) {
+		if (frog.y > HEIGHT - 30) {
 			gameOver = true;
 		} else if (frog.y < 0) {
 			gameOver = true;
@@ -90,7 +91,7 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 
 		if (gameOver) {
 
-			frog = new Rectangle(WIDTH / 2 - 10, HEIGHT / 2 - 10, 20, 20);
+			frog = new Rectangle(WIDTH / 2 - 10, HEIGHT - 50, 20, 20);
 
 			gameOver = false;
 		}
@@ -105,7 +106,7 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 
 		if (gameOver) {
 
-			frog = new Rectangle(WIDTH / 2 - 10, HEIGHT / 2 - 10, 20, 20);
+			frog = new Rectangle(WIDTH / 2 - 10, HEIGHT - 50, 20, 20);
 			gameOver = false;
 		}
 		if (!started) {
@@ -119,24 +120,29 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 
 		if (gameOver) {
 
-			frog = new Rectangle(WIDTH / 2 - 10, HEIGHT / 2 - 10, 20, 20);
+			frog = new Rectangle(WIDTH / 2 - 10, HEIGHT - 50, 20, 20);
 			
 			gameOver = false;
 			
 		}
 
+			gameOver = false;
+		
 			if (!started) {
 				started = true;
 			} else if (!gameOver) {
 				frog.x += 15;
 			}
-	}
+
+		}
+	
+
 
 	public void moveLeft() {
 
 		if (gameOver) {
 
-			frog = new Rectangle(WIDTH / 2 - 10, HEIGHT / 2 - 10, 20, 20);
+			frog = new Rectangle(WIDTH / 2 - 10, HEIGHT - 50, 20, 20);
 
 			gameOver = false;
 		}
@@ -186,17 +192,16 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 		if (e.getKeyCode() == KeyEvent.VK_DOWN) {
 			moveDown();
 		}
-		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-			moveRight();
-		}
 		if (e.getKeyCode() == KeyEvent.VK_LEFT) {
 			moveLeft();
+		}
+		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+			moveRight();
 		}
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-
 	}
 
 }
