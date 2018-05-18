@@ -45,10 +45,5 @@ public static void main(String[] args) {
 frogger = new Frogger();
 }
 
-@Override
-public void actionPerformed(ActionEvent e) {
-	// TODO Auto-generated method stub
-	
-}
 
 }
