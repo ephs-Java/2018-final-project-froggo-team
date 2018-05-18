@@ -19,7 +19,7 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 
 	public static Frogger frogger;
 
-	public final int WIDTH = 1000, HEIGHT = 600;
+	public final int WIDTH = 1200, HEIGHT = 720;
 
 	public Renderer renderer;
 
@@ -50,31 +50,23 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 
 	public void repaint(Graphics g) {
 		g.setColor(Color.green);
-		g.fillRect(0, 0, 1000, 1000);
-		
+		g.fillRect(0, 0, 1200, 700);
 		g.setColor(Color.black);
-		g.fillRect(0, 100, WIDTH, 375);
-		
+		g.fillRect(0, 50, WIDTH, 270);
+		g.setColor(Color.black);
+		g.fillRect(0, 370, WIDTH, 270);
 		g.setColor(Color.YELLOW);
-		g.fillRect(0, 290, WIDTH, HEIGHT / 45);
+		g.fillRect(0, 165, WIDTH, HEIGHT / 60);
 		g.setColor(Color.YELLOW);
-		g.fillRect(0, 270, WIDTH, HEIGHT / 45);
+		g.fillRect(0, 185, WIDTH, HEIGHT / 60);
+		g.setColor(Color.YELLOW);
+		g.fillRect(0, 480, WIDTH, HEIGHT / 60);
+		g.setColor(Color.YELLOW);
+		g.fillRect(0, 500, WIDTH, HEIGHT / 60);
 		
 		g.setColor(Color.RED);
 		g.fillRect(frog.x, frog.y, frog.width, frog.height);
 		
-		g.setColor(Color.white);
-		g.setFont(new Font("Arial", 4, WIDTH - HEIGHT - 350));
-		if (!started) {
-			g.drawString("Click a difficulty to Start!", WIDTH / 2 - 300, HEIGHT / 2 - 200);
-			g.drawString("Easy", WIDTH / 2 - 100, HEIGHT / 2 - 100);
-			g.drawString("Medium", WIDTH / 2 - 100, HEIGHT / 2);
-			g.drawString("Hard", WIDTH / 2 - 100, HEIGHT / 2 + 100);
-		}
-		if (gameOver) {
-			g.setFont(new Font("Arial", 4, WIDTH - HEIGHT - 250));
-			g.drawString("Game Over!", WIDTH / 4 - 150, HEIGHT / 2 - 50);
-		}
 	}
 
 	public static void main(String[] args) {
