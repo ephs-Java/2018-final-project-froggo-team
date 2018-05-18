@@ -2,8 +2,6 @@ package Froggo;
 
 import java.awt.Color;
 import java.awt.Graphics;
-<<<<<<< HEAD
-=======
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,14 +11,11 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Random;
->>>>>>> branch 'master' of https://github.com/ephs-Java/2018-final-project-froggo-team.git
+import java.util.Timer;
+
 import javax.swing.JFrame;
 
-<<<<<<< HEAD
-public class Frogger {
-=======
 public class Frogger implements ActionListener, MouseListener, KeyListener {
->>>>>>> branch 'master' of https://github.com/ephs-Java/2018-final-project-froggo-team.git
 
 	public static Frogger frogger;
 
@@ -35,7 +30,6 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 	public Frogger() {
 
 		JFrame jframe = new JFrame();
-		Timer timer = new Timer(20, this);
 
 		renderer = new Renderer();
 
@@ -49,8 +43,7 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 		jframe.setVisible(true);
 
 		frog = new Rectangle(WIDTH / 2 - 10, HEIGHT / 2 - 10, 20, 20);
-		
-		timer.start();
+	
 	}
 
 	public void repaint(Graphics g) {
@@ -79,8 +72,6 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 		frogger = new Frogger();
 	}
 
-<<<<<<< HEAD
-=======
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (frog.y > HEIGHT - 120) {
@@ -201,6 +192,5 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 	public void keyReleased(KeyEvent e) {
 
 	}
->>>>>>> branch 'master' of https://github.com/ephs-Java/2018-final-project-froggo-team.git
 
 }
