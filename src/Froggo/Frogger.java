@@ -2,48 +2,205 @@ package Froggo;
 
 import java.awt.Color;
 import java.awt.Graphics;
+<<<<<<< HEAD
+=======
+import java.awt.Rectangle;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.util.ArrayList;
+import java.util.Random;
+>>>>>>> branch 'master' of https://github.com/ephs-Java/2018-final-project-froggo-team.git
 import javax.swing.JFrame;
 
+<<<<<<< HEAD
 public class Frogger {
+=======
+public class Frogger implements ActionListener, MouseListener, KeyListener {
+>>>>>>> branch 'master' of https://github.com/ephs-Java/2018-final-project-froggo-team.git
 
-public static Frogger frogger;
+	public static Frogger frogger;
 
-public final int WIDTH = 1000, HEIGHT = 600;
+	public final int WIDTH = 1200, HEIGHT = 720;
 
-public Renderer renderer;
+	public Renderer renderer;
 
-public Frogger() {
+	public boolean gameOver, started;
 
-JFrame jframe = new JFrame();
+	public Rectangle frog;
 
-renderer = new Renderer();
+	public Frogger() {
 
-jframe.add(renderer);
-jframe.setTitle("Frogger");
-jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-jframe.setSize(WIDTH, HEIGHT);
-jframe.setResizable(false);
-jframe.setVisible(true);
+		JFrame jframe = new JFrame();
+		Timer timer = new Timer(20, this);
 
+		renderer = new Renderer();
 
-}
+		jframe.add(renderer);
+		jframe.setTitle("Frogger");
+		jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		jframe.setSize(WIDTH, HEIGHT);
+		jframe.addMouseListener(this);
+		jframe.addKeyListener(this);
+		jframe.setResizable(false);
+		jframe.setVisible(true);
 
-public void repaint(Graphics g) {
+		frog = new Rectangle(WIDTH / 2 - 10, HEIGHT / 2 - 10, 20, 20);
+		
+		timer.start();
+	}
 
-g.setColor(Color.green);
-g.fillRect(0, 0, 1000, 1000);
-g.setColor(Color.black);
-g.fillRect(0, 100, WIDTH, 375);
-g.setColor(Color.YELLOW);
-g.fillRect(0, 290, WIDTH, HEIGHT / 45);
-g.setColor(Color.YELLOW);
-g.fillRect(0, 270, WIDTH, HEIGHT / 45);
-}
+	public void repaint(Graphics g) {
+		g.setColor(Color.green);
+		g.fillRect(0, 0, 1200, 700);
+		g.setColor(Color.black);
+		g.fillRect(0, 50, WIDTH, 270);
+		g.setColor(Color.black);
+		g.fillRect(0, 370, WIDTH, 270);
+		g.setColor(Color.YELLOW);
+		g.fillRect(0, 165, WIDTH, HEIGHT / 60);
+		g.setColor(Color.YELLOW);
+		g.fillRect(0, 185, WIDTH, HEIGHT / 60);
+		g.setColor(Color.YELLOW);
+		g.fillRect(0, 480, WIDTH, HEIGHT / 60);
+		g.setColor(Color.YELLOW);
+		g.fillRect(0, 500, WIDTH, HEIGHT / 60);
+		
+		g.setColor(Color.RED);
+		g.fillRect(frog.x, frog.y, frog.width, frog.height);
+		
+	}
 
-public static void main(String[] args) {
+	public static void main(String[] args) {
 
-frogger = new Frogger();
-}
+		frogger = new Frogger();
+	}
 
+<<<<<<< HEAD
+=======
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if (frog.y > HEIGHT - 120) {
+			gameOver = true;
+		} else if (frog.y < 0) {
+			gameOver = true;
+		}
+		renderer.repaint();
+
+	}
+
+	public void moveUp() {
+
+		if (gameOver) {
+
+			frog = new Rectangle(WIDTH / 2 - 10, HEIGHT / 2 - 10, 20, 20);
+
+			gameOver = false;
+		}
+		if (!started) {
+			started = true;
+		} else if (!gameOver) {
+			frog.y += -15;
+		}
+	}
+
+	public void moveDown() {
+
+		if (gameOver) {
+
+			frog = new Rectangle(WIDTH / 2 - 10, HEIGHT / 2 - 10, 20, 20);
+			gameOver = false;
+		}
+		if (!started) {
+			started = true;
+		} else if (!gameOver) {
+			frog.y += 15;
+		}
+	}
+
+	public void moveRight() {
+
+		if (gameOver) {
+
+			frog = new Rectangle(WIDTH / 2 - 10, HEIGHT / 2 - 10, 20, 20);
+
+			if (!started) {
+				started = true;
+			} else if (!gameOver) {
+				frog.x += 15;
+			}
+		}
+	}
+
+	public void moveLeft() {
+
+		if (gameOver) {
+
+			frog = new Rectangle(WIDTH / 2 - 10, HEIGHT / 2 - 10, 20, 20);
+
+			gameOver = false;
+		}
+		if (!started) {
+			started = true;
+		} else if (!gameOver) {
+			frog.x += -15;
+		}
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		started = true;
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		if (e.getKeyCode() == KeyEvent.VK_UP) {
+			moveUp();
+		}
+		if (e.getKeyCode() == KeyEvent.VK_DOWN) {
+			moveDown();
+		}
+		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+			moveRight();
+		}
+		if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+			moveLeft();
+		}
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+
+	}
+>>>>>>> branch 'master' of https://github.com/ephs-Java/2018-final-project-froggo-team.git
 
 }
