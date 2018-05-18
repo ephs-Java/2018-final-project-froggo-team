@@ -11,9 +11,9 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.Timer;
-
 import javax.swing.JFrame;
+
+public class Frogger {
 
 public class Frogger implements ActionListener, MouseListener, KeyListener {
 
@@ -30,6 +30,7 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 	public Frogger() {
 
 		JFrame jframe = new JFrame();
+		Timer timer = new Timer(20, this);
 
 		renderer = new Renderer();
 
@@ -43,7 +44,8 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 		jframe.setVisible(true);
 
 		frog = new Rectangle(WIDTH / 2 - 10, HEIGHT / 2 - 10, 20, 20);
-	
+		
+		timer.start();
 	}
 
 	public void repaint(Graphics g) {
@@ -192,5 +194,8 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 	public void keyReleased(KeyEvent e) {
 
 	}
+	
+	public static void main(String[] args) {
 
+}
 }
