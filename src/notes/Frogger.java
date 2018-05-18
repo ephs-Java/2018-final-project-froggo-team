@@ -1,4 +1,4 @@
-package Froggo;
+package notes;
 
 import java.awt.Color;
 import java.awt.Font;
