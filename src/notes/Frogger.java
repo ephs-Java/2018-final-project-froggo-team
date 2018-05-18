@@ -145,7 +145,7 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 		if (!started) {
 			started = true;
 		} else if (!gameOver) {
-			frog.x = 15;
+			frog.x += 15;
 		}
 	}
 
