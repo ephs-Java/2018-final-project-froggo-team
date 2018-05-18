@@ -13,49 +13,54 @@ import javax.swing.Timer;
 
 public class Frogger implements ActionListener {
 
-public static Frogger frogger;
+	public static Frogger frogger;
 
-public final int WIDTH = 1000, HEIGHT = 600;
+	public final int WIDTH = 1200, HEIGHT = 720;
 
-public Renderer renderer;
+	public Renderer renderer;
 
-public Frogger() {
+	public Frogger() {
 
-JFrame jframe = new JFrame();
+		JFrame jframe = new JFrame();
 
-renderer = new Renderer();
+		renderer = new Renderer();
 
-jframe.add(renderer);
-jframe.setTitle("Frogger");
-jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-jframe.setSize(WIDTH, HEIGHT);
-jframe.setResizable(false);
-jframe.setVisible(true);
+		jframe.add(renderer);
+		jframe.setTitle("Frogger");
+		jframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		jframe.setSize(WIDTH, HEIGHT);
+		jframe.setResizable(false);
+		jframe.setVisible(true);
 
+	}
 
-}
+	public void repaint(Graphics g) {
 
-public void repaint(Graphics g) {
+		g.setColor(Color.green);
+		g.fillRect(0, 0, 1200, 700);
+		g.setColor(Color.black);
+		g.fillRect(0, 50, WIDTH, 270);
+		g.setColor(Color.black);
+		g.fillRect(0, 370, WIDTH, 270);
+		g.setColor(Color.YELLOW);
+		g.fillRect(0, 165, WIDTH, HEIGHT / 60);
+		g.setColor(Color.YELLOW);
+		g.fillRect(0, 185, WIDTH, HEIGHT / 60);
+		g.setColor(Color.YELLOW);
+		g.fillRect(0, 480, WIDTH, HEIGHT / 60);
+		g.setColor(Color.YELLOW);
+		g.fillRect(0, 500, WIDTH, HEIGHT / 60);
+	}
 
-g.setColor(Color.green);
-g.fillRect(0, 0, 1000, 1000);
-g.setColor(Color.black);
-g.fillRect(0, 100, WIDTH, 375);
-g.setColor(Color.YELLOW);
-g.fillRect(0, 290, WIDTH, HEIGHT / 45);
-g.setColor(Color.YELLOW);
-g.fillRect(0, 270, WIDTH, HEIGHT / 45);
-}
+	public static void main(String[] args) {
 
-public static void main(String[] args) {
+		frogger = new Frogger();
+	}
 
-frogger = new Frogger();
-}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
 
-@Override
-public void actionPerformed(ActionEvent e) {
-	// TODO Auto-generated method stub
-	
-}
+	}
 
 }
