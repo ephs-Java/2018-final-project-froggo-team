@@ -67,6 +67,7 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 		g.setColor(Color.RED);
 		g.fillRect(frog.x, frog.y, frog.width, frog.height);
 		
+		
 	}
 
 	public static void main(String[] args) {
@@ -119,13 +120,16 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 		if (gameOver) {
 
 			frog = new Rectangle(WIDTH / 2 - 10, HEIGHT / 2 - 10, 20, 20);
+			
+			gameOver = false;
+			
+		}
 
 			if (!started) {
 				started = true;
 			} else if (!gameOver) {
 				frog.x += 15;
 			}
-		}
 	}
 
 	public void moveLeft() {
