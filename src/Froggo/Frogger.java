@@ -31,6 +31,11 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 
 	public Rectangle frog;
 
+	public static void main(String[] args) {
+
+		frogger = new Frogger();
+	}
+
 	public Frogger() {
 
 		JFrame jframe = new JFrame();
@@ -84,19 +89,15 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 		g.setColor(Color.RED);
 		g.fillRect(frog.x, frog.y, frog.width, frog.height);
 
-		g.setColor(Color.WHITE);
 		if (gameOver) {
+			g.setColor(Color.RED);
 			g.setFont(new Font("Arial", 4, WIDTH - HEIGHT - 300));
 			g.drawString("Game Over!", WIDTH / 4 - 200, HEIGHT / 2 - 50);
-		}else if(youWin){
+		} else if (youWin) {
+			g.setColor(Color.CYAN);
 			g.setFont(new Font("Arial", 4, WIDTH - HEIGHT - 300));
 			g.drawString("You Win!", WIDTH / 4 - 200, HEIGHT / 2 - 50);
 		}
-	}
-
-	public static void main(String[] args) {
-
-		frogger = new Frogger();
 	}
 
 	@Override
