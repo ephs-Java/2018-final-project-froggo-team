@@ -12,3 +12,12 @@ I would like to connect you with a programmer from the wild.
 So, I need to know what you are thinking, and have a paragraph description of your project to share.
 We have a draft to match mentors and groups, so make it compelling.
 
+if (start) {
+			car.add(new Rectangle(WIDTH + width + car.size() * 300, HEIGHT - height - 590, width, height));
+			car.add(new Rectangle(WIDTH + width + (car.size() - 1) * 300, HEIGHT - height - 120, width, height));
+		} else {
+			car.add(new Rectangle(car.get(car.size() - 2).x + 600, HEIGHT - height - 590, width, height));
+			car.add(new Rectangle(car.get(car.size() - 2).x, HEIGHT - height - 120, width, height));
+		}
+
+	}
