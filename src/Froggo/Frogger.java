@@ -27,7 +27,7 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 
 	public ArrayList<Rectangle> car;
 
-	public boolean gameOver, started;
+	public boolean gameOver, started, youWin;
 
 	public Rectangle frog;
 
@@ -88,6 +88,9 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 		if (gameOver) {
 			g.setFont(new Font("Arial", 4, WIDTH - HEIGHT - 300));
 			g.drawString("Game Over!", WIDTH / 4 - 200, HEIGHT / 2 - 50);
+		}else if(youWin){
+			g.setFont(new Font("Arial", 4, WIDTH - HEIGHT - 300));
+			g.drawString("You Win!", WIDTH / 4 - 200, HEIGHT / 2 - 50);
 		}
 	}
 
@@ -127,7 +130,7 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 		if (frog.y > HEIGHT - 60) {
 			gameOver = true;
 		} else if (frog.y < 0) {
-			gameOver = true;
+			youWin = true;
 		} else if (frog.x < 0) {
 			gameOver = true;
 		} else if (frog.x > WIDTH - 35) {
@@ -217,6 +220,7 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 		int r = 50 + rand.nextInt(300);
 
 		
+		
 			car.add(new Rectangle(WIDTH + width + car.size() * 300 - r, HEIGHT - height - 120, width, height));
 			car.add(new Rectangle(WIDTH + width + car.size() * 300 + r, HEIGHT - height - 270, width, height));
 			car.add(new Rectangle(WIDTH + width + car.size() * 300 - r, HEIGHT - height - 435, width, height));
@@ -230,6 +234,18 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 			car.add(new Rectangle(car.get(car.size() - 1).x - r, HEIGHT - height - 590, width, height));
 			car.add(new Rectangle(car.get(car.size() - 1).x, 0, 0, height));
 		
+		car.add(new Rectangle(WIDTH + width + car.size() * 300 - r, HEIGHT - height - 120, width, height));
+		car.add(new Rectangle(WIDTH + width + car.size() * 300 + r - 300, HEIGHT - height - 270, width, height));
+		car.add(new Rectangle(WIDTH + width + car.size() * 300 - r - 600, HEIGHT - height - 435, width, height));
+		car.add(new Rectangle(WIDTH + width + car.size() * 300 + r - 900, HEIGHT - height - 590, width, height));
+		car.add(new Rectangle(WIDTH + width + (car.size() - 1) * 300, 0, 0, height));
+
+		car.add(new Rectangle(car.get(car.size() - 1).x + 600, HEIGHT - height - 120, width, height));
+		car.add(new Rectangle(car.get(car.size() - 1).x + r, HEIGHT - height - 270, width, height));
+		car.add(new Rectangle(car.get(car.size() - 1).x - r, HEIGHT - height - 435, width, height));
+		car.add(new Rectangle(car.get(car.size() - 1).x - r, HEIGHT - height - 590, width, height));
+		car.add(new Rectangle(car.get(car.size() - 1).x, 0, 0, height));
+
 
 	}
 		
