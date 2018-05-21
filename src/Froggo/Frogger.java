@@ -48,7 +48,7 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 		jframe.setResizable(false);
 		jframe.setVisible(true);
 
-		frog = new Rectangle(WIDTH / 2 - 10, 10, 20, 20);
+		frog = new Rectangle(WIDTH / 2 - 10, HEIGHT - 75, 20, 20);
 		car = new ArrayList<Rectangle>();
 
 		addCar(true);
@@ -116,7 +116,7 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 
 			}
 		}
-		
+
 		for (Rectangle Car : car) {
 			if (Car.intersects(frog)) {
 				gameOver = true;
@@ -141,7 +141,7 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 
 		if (gameOver) {
 
-			frog = new Rectangle(WIDTH / 2 - 10, 10, 20, 20);
+			frog = new Rectangle(WIDTH / 2 - 10, HEIGHT - 75, 20, 20);
 
 			gameOver = false;
 		}
@@ -156,7 +156,7 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 
 		if (gameOver) {
 
-			frog = new Rectangle(WIDTH / 2 - 10, 10, 20, 20);
+			frog = new Rectangle(WIDTH / 2 - 10, HEIGHT - 75, 20, 20);
 
 			gameOver = false;
 		}
@@ -171,7 +171,7 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 
 		if (gameOver) {
 
-			frog = new Rectangle(WIDTH / 2 - 10, 10, 20, 20);
+			frog = new Rectangle(WIDTH / 2 - 10, HEIGHT - 75, 20, 20);
 
 			gameOver = false;
 		}
@@ -186,7 +186,7 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 
 		if (gameOver) {
 
-			frog = new Rectangle(WIDTH / 2 - 10, 10, 20, 20);
+			frog = new Rectangle(WIDTH / 2 - 10, HEIGHT - 75, 20, 20);
 
 			gameOver = false;
 		}
@@ -194,6 +194,19 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 			started = true;
 		} else if (!gameOver) {
 			frog.x += -20;
+		}
+	}
+
+	public void click() {
+
+		if (gameOver) {
+
+			frog = new Rectangle(WIDTH / 2 - 10, HEIGHT - 75, 20, 20);
+
+			gameOver = false;
+		}
+		if (!started) {
+			started = true;
 		}
 	}
 
@@ -218,7 +231,6 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 		}
 
 	}
-	
 
 	public void paintCar(Graphics g, Rectangle car) {
 
@@ -229,7 +241,7 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		started = true;
+		click();
 	}
 
 	@Override
