@@ -9,3 +9,5 @@ End Goal: Create a working Frogger game with a scoring system
 
 Week 1 Goal: Implement graphics for each component (possibly start working with movement)
 
+Week 2 Goal: Finish cars, Better UI
+
