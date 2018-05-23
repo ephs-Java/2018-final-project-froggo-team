@@ -60,6 +60,8 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 	    addCarRight(true);
 		addCarRight(true);
 		addCarRight(true);
+		addCarRight(true);
+
 		addCarLeft(true);
 		addCarLeft(true);
 		addCarLeft(true);
@@ -102,47 +104,6 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 			g.setFont(new Font("Arial", 4, WIDTH - HEIGHT - 300));
 			g.drawString("You Win!", WIDTH / 4 - 200, HEIGHT / 2 - 50);
 		}
-	}
-
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		int speed = 15;
-		if (started) {
-			for (int i = 0; i < car.size(); i++) {
-				Rectangle Car = car.get(i);
-				Car.x -= speed;
-			}
-		}
-		for (int i = 0; i < car.size(); i++) {
-			Rectangle Car = car.get(i);
-			if (Car.x + Car.width < 0) {
-				car.remove(Car);
-
-				if (Car.y == 0) {
-					addCarRight(false);
-				}
-
-			}
-		}
-
-		for (Rectangle Car : car) {
-			if (Car.intersects(frog)) {
-				gameOver = true;
-				frog.x = Car.x - frog.width;
-			}
-		}
-
-		if (frog.y > HEIGHT - 60) {
-			gameOver = true;
-		} else if (frog.y < 0) {
-			youWin = true;
-		} else if (frog.x < 0) {
-			gameOver = true;
-		} else if (frog.x > WIDTH - 35) {
-			gameOver = true;
-		}
-		renderer.repaint();
-
 	}
 
 	public void moveUp() {
@@ -217,6 +178,47 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 			started = true;
 		}
 	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		int speed = 15;
+		if (started) {
+			for (int i = 0; i < car.size(); i++) {
+				Rectangle Car = car.get(i);
+				if(Car.x)
+			}
+		}
+		for (int i = 0; i < car.size(); i++) {
+			Rectangle Car = car.get(i);
+			if (Car.x + Car.width < 0) {
+				car.remove(Car);
+
+				if (Car.y == 0) {
+					addCarRight(false);
+				}
+
+			}
+		}
+
+		for (Rectangle Car : car) {
+			if (Car.intersects(frog)) {
+				gameOver = true;
+				frog.x = Car.x - frog.width;
+			}
+		}
+
+		if (frog.y > HEIGHT - 60) {
+			gameOver = true;
+		} else if (frog.y < 0) {
+			youWin = true;
+		} else if (frog.x < 0) {
+			gameOver = true;
+		} else if (frog.x > WIDTH - 35) {
+			gameOver = true;
+		}
+		renderer.repaint();
+
+	}
 
 	public void addCarRight(boolean start) {
 
@@ -224,26 +226,21 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 		int height = 50;
 		int r = 50 + rand.nextInt(300);
 
-		car.add(new Rectangle(WIDTH + width + car.size() * 300 - r, HEIGHT - height - 120, width, height));
 		car.add(new Rectangle(WIDTH + width + car.size() * 300 + r - 300, HEIGHT - height - 270, width, height));
-		car.add(new Rectangle(WIDTH + width + car.size() * 300 - r - 600, HEIGHT - height - 435, width, height));
 		car.add(new Rectangle(WIDTH + width + car.size() * 300 + r - 900, HEIGHT - height - 590, width, height));
 		car.add(new Rectangle(WIDTH + width + (car.size() - 1) * 300, 0, 0, height));
 
-		car.add(new Rectangle(car.get(car.size() - 1).x + 600, HEIGHT - height - 120, width, height));
 		car.add(new Rectangle(car.get(car.size() - 1).x + r, HEIGHT - height - 270, width, height));
-		car.add(new Rectangle(car.get(car.size() - 1).x - r, HEIGHT - height - 435, width, height));
 		car.add(new Rectangle(car.get(car.size() - 1).x - r, HEIGHT - height - 590, width, height));
 		car.add(new Rectangle(car.get(car.size() - 1).x, 0, 0, height));
 
 	}
-	
+
 	public void addCarLeft(boolean start) {
 
 		int width = 100;
 		int height = 50;
 		int r = 50 + rand.nextInt(300);
-
 		
 		
 			car.add(new Rectangle(WIDTH + width + car.size() * 300 - r, HEIGHT - height - 120, width, height));
@@ -252,7 +249,14 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 			car.add(new Rectangle(WIDTH + width + car.size() * 300 + r, HEIGHT - height - 590, width, height));
 			car.add(new Rectangle(WIDTH + width + (car.size() - 1) * 300, 0, 0, height));
 
-			
+		car.add(new Rectangle(0 - width - r, HEIGHT - height - 120, width, height));
+		car.add(new Rectangle(0 - width - r - 600, HEIGHT - height - 435, width, height));
+		car.add(new Rectangle(WIDTH + width + (car.size() - 1) * 300, 0, 0, height));
+
+		car.add(new Rectangle(car.get(car.size() - 1).x + 600, HEIGHT - height - 120, width, height));
+		car.add(new Rectangle(car.get(car.size() - 1).x - r, HEIGHT - height - 435, width, height));
+		car.add(new Rectangle(car.get(car.size() - 1).x, 0, 0, height));
+
 
 	}
 		
