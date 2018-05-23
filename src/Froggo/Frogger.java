@@ -56,10 +56,14 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 		frog = new Rectangle(WIDTH / 2 - 10, HEIGHT - 75, 20, 20);
 		car = new ArrayList<Rectangle>();
 
-		addCar(true);
-		addCar(true);
-		addCar(true);
-		addCar(true);
+		addCarRight(true);
+		addCarRight(true);
+		addCarRight(true);
+		addCarRight(true);
+		/*addCarLeft(true);
+		addCarLeft(true);
+		addCarLeft(true);
+		addCarLeft(true);*/
 
 		timer.start();
 	}
@@ -115,7 +119,7 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 				car.remove(Car);
 
 				if (Car.y == 0) {
-					addCar(false);
+					addCarRight(false);
 				}
 
 			}
@@ -214,7 +218,27 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 		}
 	}
 
-	public void addCar(boolean start) {
+	public void addCarRight(boolean start) {
+
+		int width = 100;
+		int height = 50;
+		int r = 50 + rand.nextInt(300);
+
+		car.add(new Rectangle(WIDTH + width + car.size() * 300 - r, HEIGHT - height - 120, width, height));
+		car.add(new Rectangle(WIDTH + width + car.size() * 300 + r - 300, HEIGHT - height - 270, width, height));
+		car.add(new Rectangle(WIDTH + width + car.size() * 300 - r - 600, HEIGHT - height - 435, width, height));
+		car.add(new Rectangle(WIDTH + width + car.size() * 300 + r - 900, HEIGHT - height - 590, width, height));
+		car.add(new Rectangle(WIDTH + width + (car.size() - 1) * 300, 0, 0, height));
+
+		car.add(new Rectangle(car.get(car.size() - 1).x + 600, HEIGHT - height - 120, width, height));
+		car.add(new Rectangle(car.get(car.size() - 1).x + r, HEIGHT - height - 270, width, height));
+		car.add(new Rectangle(car.get(car.size() - 1).x - r, HEIGHT - height - 435, width, height));
+		car.add(new Rectangle(car.get(car.size() - 1).x - r, HEIGHT - height - 590, width, height));
+		car.add(new Rectangle(car.get(car.size() - 1).x, 0, 0, height));
+
+	}
+	
+	public void addCarLeft(boolean start) {
 
 		int width = 100;
 		int height = 50;
