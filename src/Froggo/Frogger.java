@@ -57,13 +57,13 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 		car = new ArrayList<Rectangle>();
 
 		addCarRight(true);
+	    addCarRight(true);
 		addCarRight(true);
 		addCarRight(true);
-		addCarRight(true);
-		/*addCarLeft(true);
 		addCarLeft(true);
 		addCarLeft(true);
-		addCarLeft(true);*/
+		addCarLeft(true);
+		addCarLeft(true);
 
 		timer.start();
 	}
