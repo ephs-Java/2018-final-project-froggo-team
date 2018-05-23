@@ -229,24 +229,6 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 			car.add(new Rectangle(WIDTH + width + (car.size() - 1) * 300, 0, 0, height));
 
 			
-			car.add(new Rectangle(car.get(car.size() - 1).x + 600, HEIGHT - height - 120, width, height));
-			car.add(new Rectangle(car.get(car.size() - 1).x + r, HEIGHT - height - 270, width, height));
-			car.add(new Rectangle(car.get(car.size() - 1).x - r, HEIGHT - height - 435, width, height));
-			car.add(new Rectangle(car.get(car.size() - 1).x - r, HEIGHT - height - 590, width, height));
-			car.add(new Rectangle(car.get(car.size() - 1).x, 0, 0, height));
-		
-		car.add(new Rectangle(WIDTH + width + car.size() * 300 - r, HEIGHT - height - 120, width, height));
-		car.add(new Rectangle(WIDTH + width + car.size() * 300 + r - 300, HEIGHT - height - 270, width, height));
-		car.add(new Rectangle(WIDTH + width + car.size() * 300 - r - 600, HEIGHT - height - 435, width, height));
-		car.add(new Rectangle(WIDTH + width + car.size() * 300 + r - 900, HEIGHT - height - 590, width, height));
-		car.add(new Rectangle(WIDTH + width + (car.size() - 1) * 300, 0, 0, height));
-
-		car.add(new Rectangle(car.get(car.size() - 1).x + 600, HEIGHT - height - 120, width, height));
-		car.add(new Rectangle(car.get(car.size() - 1).x + r, HEIGHT - height - 270, width, height));
-		car.add(new Rectangle(car.get(car.size() - 1).x - r, HEIGHT - height - 435, width, height));
-		car.add(new Rectangle(car.get(car.size() - 1).x - r, HEIGHT - height - 590, width, height));
-		car.add(new Rectangle(car.get(car.size() - 1).x, 0, 0, height));
-
 
 	}
 		
