@@ -30,6 +30,10 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 	public boolean gameOver, started, youWin;
 
 	public Rectangle frog;
+	
+	public int lives = 3;
+	
+	public int timeCounter = 30;
 
 	public static void main(String[] args) {
 
@@ -56,14 +60,17 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 		frog = new Rectangle(WIDTH / 2 - 10, HEIGHT - 75, 20, 20);
 		car = new ArrayList<Rectangle>();
 
-		addCarRight(true);
-	    addCarRight(true);
-		addCarRight(true);
-		addCarRight(true);
-		addCarLeft(true);
-		addCarLeft(true);
-		addCarLeft(true);
-		addCarLeft(true);
+
+		addCar(true);
+		addCar(true);
+		addCar(true);
+		addCar(true);
+
+		addCar(true);
+		addCar(true);
+		addCar(true);
+		addCar(true);
+
 
 		timer.start();
 	}
@@ -85,6 +92,8 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 		g.fillRect(0, 480, WIDTH, HEIGHT / 60);
 		g.setColor(Color.YELLOW);
 		g.fillRect(0, 500, WIDTH, HEIGHT / 60);
+		g.setFont(new Font("Dialog", 4, WIDTH - HEIGHT - 300));
+		g.drawString("Lives: " + lives, 100, 100);
 
 		for (Rectangle Car : car) {
 			paintCar(g, Car);
@@ -96,7 +105,9 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 		if (gameOver) {
 			g.setColor(Color.RED);
 			g.setFont(new Font("Dialog", 4, WIDTH - HEIGHT - 300));
-			g.drawString("Game Over!", WIDTH / 4 - 200, HEIGHT / 2 - 50);
+
+			g.drawString("Game Over!", WIDTH / 4 - 210, HEIGHT / 2 - 50);
+
 		} else if (youWin) {
 			g.setColor(Color.CYAN);
 			g.setFont(new Font("Dialog", 4, WIDTH - HEIGHT - 300));
@@ -119,7 +130,7 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 				car.remove(Car);
 
 				if (Car.y == 0) {
-					addCarRight(false);
+					addCar(false);
 				}
 
 			}
@@ -150,7 +161,7 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 		if (gameOver) {
 
 			frog = new Rectangle(WIDTH / 2 - 10, HEIGHT - 75, 20, 20);
-
+			lives--;
 			gameOver = false;
 		}
 		if (!started) {
@@ -165,7 +176,7 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 		if (gameOver) {
 
 			frog = new Rectangle(WIDTH / 2 - 10, HEIGHT - 75, 20, 20);
-
+			lives--;
 			gameOver = false;
 		}
 		if (!started) {
@@ -180,7 +191,7 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 		if (gameOver) {
 
 			frog = new Rectangle(WIDTH / 2 - 10, HEIGHT - 75, 20, 20);
-
+			lives--;
 			gameOver = false;
 		}
 		if (!started) {
@@ -195,7 +206,7 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 		if (gameOver) {
 
 			frog = new Rectangle(WIDTH / 2 - 10, HEIGHT - 75, 20, 20);
-
+			lives--;
 			gameOver = false;
 		}
 		if (!started) {
@@ -210,15 +221,16 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 		if (gameOver) {
 
 			frog = new Rectangle(WIDTH / 2 - 10, HEIGHT - 75, 20, 20);
-
+			lives--;
 			gameOver = false;
 		}
 		if (!started) {
 			started = true;
 		}
 	}
+	
 
-	public void addCarRight(boolean start) {
+	public void addCar(boolean start) {
 
 		int width = 100;
 		int height = 50;
@@ -231,26 +243,9 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 		car.add(new Rectangle(WIDTH + width + (car.size() - 1) * 300, 0, 0, height));
 
 	}
-	
-	public void addCarLeft(boolean start) {
-
-		int width = 100;
-		int height = 50;
-		int r = 50 + rand.nextInt(300);
-
-		
-		
-			car.add(new Rectangle(WIDTH + width + car.size() * 300 - r, HEIGHT - height - 120, width, height));
-			car.add(new Rectangle(WIDTH + width + car.size() * 300 + r, HEIGHT - height - 270, width, height));
-			car.add(new Rectangle(WIDTH + width + car.size() * 300 - r, HEIGHT - height - 435, width, height));
-			car.add(new Rectangle(WIDTH + width + car.size() * 300 + r, HEIGHT - height - 590, width, height));
-			car.add(new Rectangle(WIDTH + width + (car.size() - 1) * 300, 0, 0, height));
-
-			
-
-	}
 		
 	
+
 
 	public void paintCar(Graphics g, Rectangle car) {
 
