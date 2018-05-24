@@ -90,8 +90,9 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 		g.fillRect(0, 480, WIDTH, HEIGHT / 60);
 		g.setColor(Color.YELLOW);
 		g.fillRect(0, 500, WIDTH, HEIGHT / 60);
-		g.setFont(new Font("Dialog", 4, WIDTH - HEIGHT - 300));
-		g.drawString("Lives: " + lives, 100, 100);
+		g.setColor(Color.BLACK);
+		g.setFont(new Font("Dialog", 1, 50));
+		g.drawString("Lives: " + lives, 50, 40);
 
 		for (Rectangle Car : car) {
 			paintCar(g, Car);
@@ -131,7 +132,7 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 		if (gameOver) {
 
 			frog = new Rectangle(WIDTH / 2 - 10, HEIGHT - 75, 20, 20);
-			lives--;
+			
 			gameOver = false;
 		}
 		if (!started) {
@@ -186,7 +187,7 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		int speed = 15;
+		int speed = 30;
 		if (started) {
 			for (int i = 0; i < car.size(); i++) {
 				Rectangle Car = car.get(i);
@@ -214,15 +215,15 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 
 		if (frog.y > HEIGHT - 60) {
 			gameOver = true;
-			lives--;
+			
 		} else if (frog.y < 0) {
 			youWin = true;
 		} else if (frog.x < 0) {
 			gameOver = true;
-			lives--;
+			
 		} else if (frog.x > WIDTH - 35) {
 			gameOver = true;
-			lives--;
+			
 		}
 		renderer.repaint();
 	}
