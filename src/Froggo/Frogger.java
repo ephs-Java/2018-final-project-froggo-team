@@ -10,8 +10,11 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
+
 import javax.swing.JFrame;
 import javax.swing.Timer;
 
@@ -109,8 +112,16 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 			g.setFont(new Font("Dialog", 4, WIDTH - HEIGHT - 300));
 			g.drawString("Game Over!", WIDTH / 4 - 210, HEIGHT / 2 - 50);
 			
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 			jframe.setVisible(false);
 			jframe.dispose();
+			jframe.dispatchEvent(new WindowEvent(jframe, WindowEvent.WINDOW_CLOSING));
 		} else if (youWin) {
 			g.setColor(Color.CYAN);
 			g.setFont(new Font("Dialog", 4, WIDTH - HEIGHT - 300));
@@ -132,7 +143,7 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 		if (!started) {
 			started = true;
 		} else if (!gameOver) {
-			frog.y += -20;
+			frog.y += -15;
 		}
 	}
 
@@ -147,7 +158,7 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 		if (!started) {
 			started = true;
 		} else if (!gameOver) {
-			frog.y += 20;
+			frog.y += 15;
 		}
 	}
 
@@ -162,7 +173,7 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 		if (!started) {
 			started = true;
 		} else if (!gameOver) {
-			frog.x += 20;
+			frog.x += 15;
 		}
 	}
 
@@ -177,7 +188,7 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 		if (!started) {
 			started = true;
 		} else if (!gameOver) {
-			frog.x += -20;
+			frog.x += -15;
 		}
 	}
 
