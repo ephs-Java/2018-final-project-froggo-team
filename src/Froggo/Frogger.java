@@ -30,10 +30,12 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 	public boolean gameOver, started, youWin;
 
 	public Rectangle frog;
-	
+
 	public int lives = 3;
-	
+
 	public int timeCounter = 30;
+	
+	public JFrame jframe;
 
 	public static void main(String[] args) {
 
@@ -42,7 +44,7 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 
 	public Frogger() {
 
-		JFrame jframe = new JFrame();
+		jframe = new JFrame();
 		Timer timer = new Timer(20, this);
 
 		renderer = new Renderer();
@@ -73,6 +75,7 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 
 
 		timer.start();
+		
 	}
 
 	public void repaint(Graphics g) {
@@ -93,6 +96,9 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 		g.setColor(Color.YELLOW);
 		g.fillRect(0, 500, WIDTH, HEIGHT / 60);
 		g.setColor(Color.black);
+
+		g.setColor(Color.BLACK);
+		
 		g.setFont(new Font("Dialog", 1, 50));
 		g.drawString("Lives: " + lives, 50, 40);
 
@@ -103,12 +109,14 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 		g.setColor(Color.RED);
 		g.fillRect(frog.x, frog.y, frog.width, frog.height);
 
-		if (gameOver) {
+		if (lives == 0) {
 			g.setColor(Color.RED);
 			g.setFont(new Font("Dialog", 4, WIDTH - HEIGHT - 300));
 
 			g.drawString("Game Over!", WIDTH / 4 - 210, HEIGHT / 2 - 50);
-
+			
+			jframe.setVisible(false);
+			jframe.dispose();
 		} else if (youWin) {
 			g.setColor(Color.CYAN);
 			g.setFont(new Font("Dialog", 4, WIDTH - HEIGHT - 300));
@@ -165,6 +173,9 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 			frog = new Rectangle(WIDTH / 2 - 10, HEIGHT - 75, 20, 20);
 			lives--;
 			gameOver = false;
+		} else if (youWin) {
+			frog = new Rectangle(WIDTH / 2 - 10, HEIGHT - 75, 20, 20);
+			youWin = false;
 		}
 		if (!started) {
 			started = true;
@@ -229,7 +240,6 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 			started = true;
 		}
 	}
-	
 
 	public void addCar(boolean start) {
 
@@ -244,9 +254,6 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 		car.add(new Rectangle(WIDTH + width + (car.size() - 1) * 300, 0, 0, height));
 
 	}
-		
-	
-
 
 	public void paintCar(Graphics g, Rectangle car) {
 
