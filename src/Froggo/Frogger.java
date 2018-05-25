@@ -34,7 +34,7 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 
 	public Rectangle frog;
 
-	public int lives = 3;
+	public int lives = 3, score = 0;
 
 	public int timeCounter = 30;
 	
@@ -99,6 +99,7 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 		g.setColor(Color.BLACK);
 		g.setFont(new Font("Dialog", 1, 50));
 		g.drawString("Lives: " + lives, 50, 40);
+		g.drawString("Score: " + score, WIDTH - 300, 40);
 
 		for (Rectangle Car : car) {
 			paintCar(g, Car);
@@ -115,7 +116,6 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 			try {
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
@@ -125,8 +125,7 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 		} else if (youWin) {
 			g.setColor(Color.CYAN);
 			g.setFont(new Font("Dialog", 4, WIDTH - HEIGHT - 300));
-			g.drawString("You Win!", WIDTH / 4 - 70, HEIGHT / 2 - 50);
-		}
+			g.drawString("You Win!", WIDTH / 4 - 70, HEIGHT / 2 - 50);		}
 	}
 
 	public void moveUp() {
@@ -139,6 +138,7 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 		} else if (youWin) {
 			frog = new Rectangle(WIDTH / 2 - 10, HEIGHT - 75, 20, 20);
 			youWin = false;
+			score++;
 		}
 		if (!started) {
 			started = true;
