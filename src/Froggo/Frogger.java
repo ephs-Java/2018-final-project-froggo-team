@@ -237,6 +237,7 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 		int r = 50 + rand.nextInt(300);
 
 		car.add(new Rectangle(WIDTH + width + car.size() * 300 + r - 300, HEIGHT - height - 270, width, height));
+		
 		car.add(new Rectangle(WIDTH + width + car.size() * 300 + r - 900, HEIGHT - height - 590, width, height));
 		car.add(new Rectangle(WIDTH + width + (car.size() - 1) * 300, 0, 0, height));
 		car.add(new Rectangle(0 - width - r, HEIGHT - height - 120, width, height));
