@@ -30,10 +30,12 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 	public boolean gameOver, started, youWin;
 
 	public Rectangle frog;
-	
+
 	public int lives = 3;
-	
+
 	public int timeCounter = 30;
+	
+	public JFrame jframe;
 
 	public static void main(String[] args) {
 
@@ -42,7 +44,7 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 
 	public Frogger() {
 
-		JFrame jframe = new JFrame();
+		jframe = new JFrame();
 		Timer timer = new Timer(20, this);
 
 		renderer = new Renderer();
@@ -71,6 +73,7 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 		addCar(true);
 
 		timer.start();
+		
 	}
 
 	public void repaint(Graphics g) {
@@ -101,10 +104,13 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 		g.setColor(Color.RED);
 		g.fillRect(frog.x, frog.y, frog.width, frog.height);
 
-		if (gameOver) {
+		if (lives == 0) {
 			g.setColor(Color.RED);
 			g.setFont(new Font("Dialog", 4, WIDTH - HEIGHT - 300));
 			g.drawString("Game Over!", WIDTH / 4 - 210, HEIGHT / 2 - 50);
+			
+			jframe.setVisible(false);
+			jframe.dispose();
 		} else if (youWin) {
 			g.setColor(Color.CYAN);
 			g.setFont(new Font("Dialog", 4, WIDTH - HEIGHT - 300));
@@ -119,6 +125,9 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 			frog = new Rectangle(WIDTH / 2 - 10, HEIGHT - 75, 20, 20);
 			lives--;
 			gameOver = false;
+		} else if (youWin) {
+			frog = new Rectangle(WIDTH / 2 - 10, HEIGHT - 75, 20, 20);
+			youWin = false;
 		}
 		if (!started) {
 			started = true;
@@ -132,7 +141,7 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 		if (gameOver) {
 
 			frog = new Rectangle(WIDTH / 2 - 10, HEIGHT - 75, 20, 20);
-			
+
 			gameOver = false;
 		}
 		if (!started) {
@@ -184,14 +193,14 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 			started = true;
 		}
 	}
-	
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		int speed = 30;
 		if (started) {
 			for (int i = 0; i < car.size(); i++) {
 				Rectangle Car = car.get(i);
-				Car.x-= speed;
+				Car.x -= speed;
 			}
 		}
 		for (int i = 0; i < car.size(); i++) {
@@ -215,20 +224,18 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 
 		if (frog.y > HEIGHT - 60) {
 			gameOver = true;
-			
+
 		} else if (frog.y < 0) {
 			youWin = true;
 		} else if (frog.x < 0) {
 			gameOver = true;
-			
+
 		} else if (frog.x > WIDTH - 35) {
 			gameOver = true;
-			
+
 		}
 		renderer.repaint();
 	}
-	
-	
 
 	public void addCar(boolean start) {
 
@@ -252,7 +259,6 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 		car.add(new Rectangle(car.get(car.size() - 1).x, 0, 0, height));
 
 	}
-
 
 	public void paintCar(Graphics g, Rectangle car) {
 
