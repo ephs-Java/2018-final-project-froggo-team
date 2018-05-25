@@ -92,8 +92,9 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 		g.fillRect(0, 480, WIDTH, HEIGHT / 60);
 		g.setColor(Color.YELLOW);
 		g.fillRect(0, 500, WIDTH, HEIGHT / 60);
-		g.setFont(new Font("Dialog", 4, WIDTH - HEIGHT - 300));
-		g.drawString("Lives: " + lives, 100, 100);
+		g.setColor(Color.black);
+		g.setFont(new Font("Dialog", 1, 50));
+		g.drawString("Lives: " + lives, 50, 40);
 
 		for (Rectangle Car : car) {
 			paintCar(g, Car);
@@ -112,6 +113,7 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 			g.setColor(Color.CYAN);
 			g.setFont(new Font("Dialog", 4, WIDTH - HEIGHT - 300));
 			g.drawString("You Win!", WIDTH / 4 - 70, HEIGHT / 2 - 50);
+            
 		}
 	}
 
@@ -176,7 +178,6 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 		if (gameOver) {
 
 			frog = new Rectangle(WIDTH / 2 - 10, HEIGHT - 75, 20, 20);
-			lives--;
 			gameOver = false;
 		}
 		if (!started) {
