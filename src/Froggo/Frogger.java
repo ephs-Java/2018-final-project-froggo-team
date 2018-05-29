@@ -10,11 +10,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
-
 import javax.swing.JFrame;
 import javax.swing.Timer;
 
@@ -22,27 +19,27 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 
 	public static Frogger frogger;
 
-	public final int WIDTH = 1200, HEIGHT = 720;
+	public final int WIDTH = 1200, HEIGHT = 720; // Indicates the width and the height of the game window
 
-	public Renderer renderer;
+	public Renderer renderer; // Render variable
 
-	public Random rand;
+	public Random rand; // Random number variable
 
-	public ArrayList<Rectangle> car;
+	public ArrayList<Rectangle> car; // Arraylist of cars
 
-	public boolean gameOver, started, youWin;
+	public boolean gameOver, started, youWin; // True/False variables for win and lose conditions
 
-	public Rectangle frog;
+	public Rectangle frog; // Creates the Frog
 
-	public int lives = 3, score = 0;
+	public int lives = 3, score = 0; // Lives and score variable
 
-	public int timeCounter = 30;
+	public int timeCounter = 30; // 
 	
-	public JFrame jframe;
+	public JFrame jframe; // Creates the Jframe
 
 	public static void main(String[] args) {
 
-		frogger = new Frogger();
+		frogger = new Frogger(); // Creates a frogger game
 	}
 
 	public Frogger() {
@@ -67,12 +64,12 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 
 
 		addCar(true);
-		addCar(true);
+		addCar(true);   // Adds cars
 		addCar(true);
 		addCar(true);
 
 		addCar(true);
-		addCar(true);
+		addCar(true);   // Adds cars
 		addCar(true);
 		addCar(true);
 
@@ -81,7 +78,7 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 		
 	}
 
-	public void repaint(Graphics g) {
+	public void repaint(Graphics g) { // Creates the background
 		g.setColor(Color.green);
 		g.fillRect(0, 0, 1200, 700);
 
@@ -113,23 +110,20 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 		g.setColor(Color.RED);
 		g.fillRect(frog.x, frog.y, frog.width, frog.height);
 
-		if (lives == 0) {
+		if (lives == 0) { // If you run out of lives
 			g.setColor(Color.RED);
 			g.setFont(new Font("Dialog", 4, WIDTH - HEIGHT - 300));
 
 			g.drawString("Game Over!", WIDTH / 4 - 210, HEIGHT / 2 - 50);
 			
 
-			jframe.setVisible(false);
-			jframe.dispose();
+//			jframe.setVisible(false);
+//			jframe.dispose();
 
-			try {
-				Thread.sleep(1000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
+			
+		
 			g.setFont(new Font("Dialog", 1, 30));
-			g.drawString("Do you want to play again?", WIDTH / 4 + 100, HEIGHT / 2);
+			g.drawString("Do you want to play again?", WIDTH / 4 + 100, HEIGHT / 2); // Prompts the user to see if they want to close the window
 			g.setColor(Color.RED);
 			g.setFont(new Font("Dialog", 1, 20));
 			g.drawString("Yes", WIDTH / 2, HEIGHT / 2 + 40);
@@ -140,17 +134,16 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 //			jframe.dispatchEvent(new WindowEvent(jframe, WindowEvent.WINDOW_CLOSING));
 
 			
-		} else if (youWin) {
+		} else if (youWin) { // Adds score if you get to the end
 			g.setColor(Color.CYAN);
 			g.setFont(new Font("Dialog", 4, WIDTH - HEIGHT - 300));
-			g.drawString("Score +1", WIDTH / 4 - 70, HEIGHT / 2 - 50);
-            
+			g.drawString("Score + 1", WIDTH / 4 - 70, HEIGHT / 2 - 50);
 		}
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		int speed = 30;
+		int speed = 30; // Sets the speed of the cars
 		if (started) {
 			for (int i = 0; i < car.size(); i++) {
 				Rectangle Car = car.get(i);
@@ -170,7 +163,7 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 		}
 
 		for (Rectangle Car : car) {
-			if (Car.intersects(frog)) {
+			if (Car.intersects(frog)) { // If the frog is hit by a car
 				gameOver = true;
 				frog.x = Car.x - frog.width;
 			}
@@ -187,20 +180,16 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 		}
 		renderer.repaint();
 
-
-			g.drawString("You Win!", WIDTH / 4 - 70, HEIGHT / 2 - 50);	
-			score++;
 			}
-
 	
 	public void moveUp() {
 
-		if (gameOver) {
+		if (gameOver) { // If the frog "dies"
 
-			frog = new Rectangle(WIDTH / 2 - 10, HEIGHT - 75, 20, 20);
+			frog = new Rectangle(WIDTH / 2 - 10, HEIGHT - 75, 20, 20); // Creates a new frog at the spawn point
 			lives--;
 			gameOver = false;
-		} else if (youWin) {
+		} else if (youWin) { // Creates a new frog at the spawn point if the frog reaches the end, and adds one to the score
 			frog = new Rectangle(WIDTH / 2 - 10, HEIGHT - 75, 20, 20);
 			youWin = false;
 			score++;
@@ -226,7 +215,7 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 		}
 	}
 
-	public void moveRight() {
+	public void moveRight() { 
 
 		if (gameOver) {
 
@@ -269,11 +258,11 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 		}
 	}
 
-	public void addCar(boolean start) {
+	public void addCar(boolean start) { // Method for adding cars
 
 		int width = 100;
 		int height = 50;
-		int r = 50 + rand.nextInt(300);
+		int r = 50 + rand.nextInt(300); // random int for the position of the cars
 
 		car.add(new Rectangle(WIDTH + width + car.size() * 300 - r, HEIGHT - height - 120, width, height));
 		car.add(new Rectangle(WIDTH + width + car.size() * 300 + r - 300, HEIGHT - height - 270, width, height));
@@ -283,7 +272,7 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 
 	}
 
-	public void paintCar(Graphics g, Rectangle car) {
+	public void paintCar(Graphics g, Rectangle car) { // Decides the color of the car
 
 		g.setColor(Color.white);
 		g.fillRect(car.x, car.y, car.width, car.height);
@@ -322,7 +311,7 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 	}
 
 	@Override
-	public void keyPressed(KeyEvent e) {
+	public void keyPressed(KeyEvent e) { // Method for arrow key movement
 		if (e.getKeyCode() == KeyEvent.VK_UP) {
 			moveUp();
 		}
