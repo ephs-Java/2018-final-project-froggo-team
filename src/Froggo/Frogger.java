@@ -117,10 +117,11 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 			
 			jframe.setVisible(false);
 			jframe.dispose();
+			
 		} else if (youWin) {
 			g.setColor(Color.CYAN);
 			g.setFont(new Font("Dialog", 4, WIDTH - HEIGHT - 300));
-			g.drawString("You Win!", WIDTH / 4 - 70, HEIGHT / 2 - 50);
+			g.drawString("Score +1", WIDTH / 4 - 70, HEIGHT / 2 - 50);
             
 		}
 	}
