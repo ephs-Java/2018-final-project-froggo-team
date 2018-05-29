@@ -118,14 +118,23 @@ public class Frogger implements ActionListener, MouseListener, KeyListener {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
+			g.setFont(new Font("Dialog", 1, 30));
+			g.drawString("Do you want to play again?", WIDTH / 4 + 100, HEIGHT / 2);
+			g.setColor(Color.RED);
+			g.setFont(new Font("Dialog", 1, 20));
+			g.drawString("Yes", WIDTH / 2, HEIGHT / 2 + 40);
+			g.drawString("No", WIDTH / 2 + 5, HEIGHT / 2 + 60);
 			
-			jframe.setVisible(false);
-			jframe.dispose();
-			jframe.dispatchEvent(new WindowEvent(jframe, WindowEvent.WINDOW_CLOSING));
+//			jframe.setVisible(false);
+//			jframe.dispose();
+//			jframe.dispatchEvent(new WindowEvent(jframe, WindowEvent.WINDOW_CLOSING));
+			
 		} else if (youWin) {
 			g.setColor(Color.CYAN);
 			g.setFont(new Font("Dialog", 4, WIDTH - HEIGHT - 300));
-			g.drawString("You Win!", WIDTH / 4 - 70, HEIGHT / 2 - 50);		}
+			g.drawString("You Win!", WIDTH / 4 - 70, HEIGHT / 2 - 50);	
+			score++;
+			}
 	}
 
 	public void moveUp() {
